@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP/Espressif/frameworks/esp-idf-v5.1.1/components/openthread
+# Install script for directory: D:/ESP/ESP-VS/esp-idf/components/openthread
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

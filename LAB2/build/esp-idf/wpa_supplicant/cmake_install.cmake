@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP/Espressif/frameworks/esp-idf-v5.1.1/components/wpa_supplicant
+# Install script for directory: D:/ESP/ESP-VS/esp-idf/components/wpa_supplicant
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

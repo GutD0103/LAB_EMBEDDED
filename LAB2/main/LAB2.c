@@ -2,33 +2,45 @@
 #include <inttypes.h>
 #include "sdkconfig.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/timers.h"
 #include "freertos/task.h"
 #include "esp_chip_info.h"
 #include "esp_flash.h"
 #include "driver/gpio.h"
 
-uint8_t pre_button = 0;
-uint8_t cur_button = 0;
 
+
+int key_reg0 = 1;
+int key_reg1 = 1;
+int key_reg2 = 1;
+int key_reg3 = 1;
 void set_up(void){
-    gpio_set_direction( GPIO_NUM_2 , GPIO_MODE_INPUT );
-    gpio_set_pull_mode(GPIO_NUM_2 ,GPIO_PULLUP_ONLY);
+    gpio_set_direction( GPIO_NUM_16 , GPIO_MODE_INPUT );
+    gpio_set_pull_mode(GPIO_NUM_16 ,GPIO_PULLUP_ONLY);
 }
-void GetKeyInput(void){
-    for(;;){
-        cur_button = gpio_get_level(GPIO_NUM_2);
-        if(cur_button == pre_button){
-            if(cur_button == 1){
-                printf("ESP\n");
+void vGetKeyInput(void){
+
+    while(1){
+        key_reg0 = key_reg1;
+        key_reg1 = key_reg2;
+        key_reg2 = gpio_get_level(GPIO_NUM_16);
+            
+        // }
+        if(key_reg0 == key_reg1 && key_reg1 == key_reg2){
+            if(key_reg3 != key_reg2){
+                key_reg3 = key_reg2;
+                if(key_reg2 == 0){
+                    printf("ESP\n");
+                }
             }
         }
-        pre_button = cur_button;
-        vTaskDelay(5/portTICK_PERIOD_MS);
+        vTaskDelay(10/portTICK_PERIOD_MS);
     }
 }
-void PrintStuIdf(void){
-    for(;;){
-        printf("%lld :2012945\n",esp_timer_get_time()/1000);
+void vPrintStuIdf(void){
+    while (1)
+    {
+        printf("2012945\n");
         vTaskDelay(1000/portTICK_PERIOD_MS);
     }
 
@@ -36,7 +48,9 @@ void PrintStuIdf(void){
 void app_main(void)
 {
     set_up();
-    xTaskCreate(GetKeyInput,"GET KEY INPUT",1000,NULL,1,NULL);
-    xTaskCreate(PrintStuIdf,"PRINT STUDENT IDENTIFY",1000,NULL,2,NULL);
-    vTaskEndScheduler();
+    xTaskCreate(vGetKeyInput,"GET KEY INPUT",1000,NULL,0,NULL);
+    xTaskCreate(vPrintStuIdf,"PRINT STUDENT IDENTIFY",1000,NULL,0,NULL);
+    // vTaskStartScheduler();
+
+    
 }
