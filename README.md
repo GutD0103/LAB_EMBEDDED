@@ -6,15 +6,15 @@ If you use "ESP-IDF Explorer" on Visual code, please follow these steps:
 
 ![Alt text](IMAGE/menuconfig.png)
 
-- Bước 2: Build project
+- Step 2: Build project
   
 ![Alt text](IMAGE/build.png)
 
-- Bước 3: Flash project
+- Step 3: Flash project
 
 ![Alt text](IMAGE/flash.png)
 
-- Bước 4: Monitor project
+- Step 4: Monitor project
 
 ![Alt text](IMAGE/monitor.png)
 
