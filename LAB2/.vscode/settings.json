@@ -4,5 +4,6 @@
     "idf.openOcdConfigs": [
         "board/esp32-wrover-kit-3.3v.cfg"
     ],
-    "idf.flashType": "UART"
+    "idf.flashType": "UART",
+    "C_Cpp.default.compilerPath": "D:\\ESP\\Espressif\\tools\\xtensa-esp32-elf\\esp-12.2.0_20230208\\xtensa-esp32-elf\\bin\\xtensa-esp32-elf-gcc.exe"
 }
