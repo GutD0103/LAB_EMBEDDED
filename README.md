@@ -1,6 +1,6 @@
 # STEP TO BUILD
 
-If you use "ESP-IDF Explorer" on Visual code, please follow these steps:
+If you use "ESP-IDF Explorer" on Visual studio code, please follow these steps:
 
 - Step 1: Use menuconfig
 
