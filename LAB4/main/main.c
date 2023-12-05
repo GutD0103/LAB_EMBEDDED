@@ -44,18 +44,21 @@ void functionTask_1(TaskRequest request) {
     vTaskDelay(request.executionTime);
     uint32_t finishTime = xTaskGetTickCount();
     printf("Task 1.%d finished at time %" PRIu32 "\n", request.numTask, finishTime);
+    vTaskDelay(5);
 }
 
 void functionTask_2(TaskRequest request) {
     vTaskDelay(request.executionTime);
     uint32_t finishTime = xTaskGetTickCount();
     printf("Task 2.%d finished at time %" PRIu32 "\n", request.numTask, finishTime);
+    vTaskDelay(5);
 }
 
 void functionTask_3(TaskRequest request) {
     vTaskDelay(request.executionTime);
     uint32_t finishTime = xTaskGetTickCount();
     printf("Task 3.%d finished at time %" PRIu32 "\n", request.numTask, finishTime);
+    vTaskDelay(5);
 }
 
 void receptionTask(void *parameter) {
