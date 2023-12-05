@@ -13,5 +13,11 @@
     ],
     "idf.portWin": "COM7",
     "idf.pythonBinPathWin": "D:/ESP/Espressif/python_env/idf5.1_py3.11_env/Scripts/python.exe",
-    "idf.toolsPathWin": "D:\\ESP\\Espressif"
+    "idf.toolsPathWin": "D:\\ESP\\Espressif",
+    "files.associations": {
+        "task.h": "c",
+        "freertos.h": "c",
+        "freertosconfig.h": "c",
+        "timers.h": "c"
+    }
 }
