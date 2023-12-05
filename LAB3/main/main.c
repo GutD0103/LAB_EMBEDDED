@@ -18,12 +18,17 @@ void vTaskFunction1 ( void * pvParameters )
 {
     char * pcTaskName ;
     pcTaskName = ( char * ) pvParameters ;
-    
+    vTaskDelay(pdMS_TO_TICKS(30));
     for ( ;; )
     {
         vPrintString ( pcTaskName );
-        buf1 = 0;
-        for(int i = 0; i < 2000000; i++) buf1++;
+        long long int time = xTaskGetTickCount() + 500;
+        while (xTaskGetTickCount() <  time)
+        {
+            
+        }
+        vPrintString ( " TASK 1 END \r \n");
+        taskYIELD();
     }
 }
 
@@ -31,46 +36,52 @@ void vTaskFunction2 ( void * pvParameters )
 {
     char * pcTaskName ;
     pcTaskName = ( char * ) pvParameters ;
-    
+    vTaskDelay(pdMS_TO_TICKS(1500));
     for ( ;; )
     { 
         vPrintString ( pcTaskName );
-        buf2 = 0;
-        for(int i = 0; i < 2000000; i++) buf2++;
-       
+        long long int time = xTaskGetTickCount() + 200;
+        while (xTaskGetTickCount() <  time)
+        {
+            
+        }
+        vPrintString ( " TASK 2 END \r \n");
+        vTaskDelay(pdMS_TO_TICKS(10000));
     }
 }
 void vTaskFunction3 ( void * pvParameters )
 {
     char * pcTaskName ;
     pcTaskName = ( char * ) pvParameters ;
-    
+    vTaskDelay(pdMS_TO_TICKS(500));
     for ( ;; )
     {
         
         vPrintString ( pcTaskName );
-        buf3 = 0;
-        for(int i = 0; i < 10000000; i++) buf3++;
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        long long int time = xTaskGetTickCount() + 200;
+        while (xTaskGetTickCount() <  time)
+        {
+            
+        }
+        vPrintString ( " TASK 3 END \r\n");
+        vTaskDelay(pdMS_TO_TICKS(10000));
     }
 }
 void vApplicationIdleHook ( void )
 {
 
-     vPrintString ( " IDLE Task is running \r \n" );
-     buf3 = 0;
-    for(int i = 0; i < 2000000; i++)
-    {
-        buf3++;
-    }
+    //  vPrintString ( " IDLE Task is running \r \n" );
+    //  buf3 = 0;
+    // for(int i = 0; i < 2000000; i++)
+    // {
+    //     buf3++;
+    // }
 }
 void app_main(void)
 {
     xTaskCreate ( vTaskFunction1 , " Task 1 " , 10000 ,( void *) pcTextForTask1 , 0 , NULL ) ;
-
-    vTaskDelay(pdMS_TO_TICKS(1200));
+    xTaskCreate ( vTaskFunction2 , " Task 2 " , 10000 ,( void *) pcTextForTask2 , 2 , NULL ) ;
     xTaskCreate ( vTaskFunction3 , " Task 3 " , 10000 ,( void *) pcTextForTask3 , 5 , NULL ) ;
-
 
     
 }

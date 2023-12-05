@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/ESP/LAB/LAB3",
-      "program": "d:/ESP/LAB/LAB3/build/Debug/outDebug",
+      "cwd": "d:/ESP/LAB/LAB3/main",
+      "program": "d:/ESP/LAB/LAB3/main/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
